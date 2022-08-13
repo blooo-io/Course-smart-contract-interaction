@@ -1,0 +1,21 @@
+.carousel-inner{
+  width:100%;
+  max-height: calc(100vh - 56px) !important;
+}
+
+.home{
+  height: calc(100% - 56px);
+}
+
+.card-form{
+  background-color: rgb(245, 238, 238) !important;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  align-items: center;
+  box-shadow: 1px 1px 12px #555;
+}
+
+.button-form{
+  background-color: rgb(71, 96, 137) !important;
+}
