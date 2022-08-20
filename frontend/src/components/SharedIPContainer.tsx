@@ -3,7 +3,7 @@ import { IntellectualProperty } from '../interfaces/IntellectualProperties'
 import getContract from '../utils/getContract'
 import IntellectualPropertyCard from '../components/IntellectualPropertyCard'
 
-const IntellectualPropertyContainer = () => {
+const SharedIPContainer = () => {
   const [contract, setContract] = useState(null)
   const [intellectualProperties, setIntellectualProperties] = useState([])
 
@@ -22,7 +22,7 @@ const IntellectualPropertyContainer = () => {
   }, [contract])
 
   async function getAllIPs() {
-    const retrievedIPs = await contract.getMyIntellectualProperties()
+    const retrievedIPs = await contract.getAllMySharedIntellectualProperties()
 
     const tempArray: any = []
     retrievedIPs.forEach((ip: IntellectualProperty) => {
@@ -36,6 +36,8 @@ const IntellectualPropertyContainer = () => {
         ownerAddress: ip.ownerAddress
       })
     })
+    console.log(retrievedIPs);
+    
     setIntellectualProperties(tempArray)
   }
 
@@ -55,4 +57,4 @@ const IntellectualPropertyContainer = () => {
   )
 }
 
-export default IntellectualPropertyContainer
+export default SharedIPContainer

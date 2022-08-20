@@ -1,12 +1,11 @@
 import React from 'react'
 import IntellectualPropertyList from '../components/IntellectualPropertyList'
-import {Card} from 'react-bootstrap'
 
 const List = () => {
   return (
-    <Card>
-      <IntellectualPropertyList/>
-    </Card>
+    <div className="w-100 d-flex flex-row align-items-center page-container background-magic-mint">
+        <IntellectualPropertyList />
+    </div>
   )
 }
 

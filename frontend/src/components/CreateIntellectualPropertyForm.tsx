@@ -10,13 +10,17 @@ export const CreateIntellectualPropertyForm = () => {
   const [accounts, setAccounts] = useState([])
   const [validated, setValidated] = useState(false)
 
-  useEffect(async () => {
+  const fetchContract = async () => {
     const provider = new ethers.providers.Web3Provider( (window as any).ethereum);
     const accountsList = await provider.listAccounts();
     setAccounts(accountsList);
 
     setContract(getContract())
     ipfsService.testAuthentication()
+  }
+
+  useEffect(() => {
+   fetchContract();
   }, [])
 
   const IPFSUploadHandler = async (): Promise<string> => {
@@ -41,14 +45,14 @@ export const CreateIntellectualPropertyForm = () => {
         description.value,
         ipfsImageHash,
         selectedFile.name
-      ) // call the VoteManager registerIntellectualProperty Contract Function
+      ) // call the registerIntellectualProperty Contract Function
     }
     setValidated(true)
   }
 
   return (
-    <Card className="card-form">
       <Form
+        className='align-self-center w-75'
         noValidate
         validated={validated}
         onSubmit={registerIntellectualProperty}
@@ -57,19 +61,18 @@ export const CreateIntellectualPropertyForm = () => {
           <Form.Label>Account public Key</Form.Label>
           <Form.Control
             type="text"
-            className="text-center"
             defaultValue={accounts[0]}
             disabled
-            required
+            required placeholder="Ox..."
           />
         </Form.Group>
         <Form.Group className="my-6" controlId="firstName">
           <Form.Label>First name (required)</Form.Label>
-          <Form.Control type="text" className="text-center" required />
+          <Form.Control type="text" required  placeholder="Guillaume..."/>
         </Form.Group>
         <Form.Group className="my-6" controlId="lastName">
           <Form.Label>Last name (required)</Form.Label>
-          <Form.Control type="text" className="text-center" required />
+          <Form.Control type="text" required placeholder="Dupont..." />
         </Form.Group>
         <Form.Group className="my-6" controlId="file">
           <Form.Label>File (required)</Form.Label>
@@ -83,15 +86,14 @@ export const CreateIntellectualPropertyForm = () => {
         </Form.Group>
         <Form.Group className="my-6" controlId="description">
           <Form.Label>Description</Form.Label>
-          <Form.Control as="textarea" rows={3} />
+          <Form.Control as="textarea" rows={3} placeholder="Describe your file"/>
         </Form.Group>
 
         <div className='d-flex justify-content-center'>
-          <Button type="submit" className="my-6 py-2 px-4 button-form">
+          <Button type="submit" className="background-indigo text-magic-mint w-50 mt-3 py-3 button-form">
             Submit form
           </Button>
         </div>
       </Form>
-    </Card>
   )
 }

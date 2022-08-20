@@ -12,3 +12,9 @@ export interface IntellectualPropertyFormData {
     name?: string;
     fileHash?: string;
 }
+export interface Request {
+  id: number;
+  ipId: number;
+  requestor: string;
+  description: string;
+}

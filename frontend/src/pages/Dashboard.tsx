@@ -1,56 +1,52 @@
-import React, { useEffect, useState } from 'react'
-import IntellectualPropertyCard from '../components/IntellectualPropertyCard'
-import { IntellectualProperty } from '../interfaces/IntellectualProperties'
-import getContract from '../utils/getContract'
+import React, { useState } from 'react'
+import classnames from 'classnames'
+import { Outlet, useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
-  const [contract, setContract] = useState(null)
-  const [intellectualProperties, setIntellectualProperties] = useState([])
-
-
-  useEffect(() => {
-    setContract(getContract())
-  }, [])
-
-  useEffect(() => {
-    if (contract) {
-      getAllIPs()
-
-      contract.on('ipCreated', async function () {
-        getAllIPs()
-      })
-    }
-  }, [contract])
-
-  async function getAllIPs() {
-    const retrievedIPs = await contract.getMyIntellectualProperties()
-
-    const tempArray: any = []
-    retrievedIPs.forEach((ip: IntellectualProperty) => {
-      tempArray.push({
-        id: ip.id,
-        firstName: ip.firstName,
-        lastName: ip.lastName,
-        description: ip.description,
-        fileHash: ip.fileHash,
-        fileName: ip.fileName,
-        ownerAddress: ip.ownerAddress
-      })
-    })
-    setIntellectualProperties(tempArray)
-  }
+  const [active, setActive] = useState('MyIP')
+  const navigate = useNavigate()
 
   return (
-    <div>
-      {intellectualProperties.length > 0 && (
-        <>
-          {intellectualProperties.map((ip: IntellectualProperty, index: number) => {
-            return(
-              <IntellectualPropertyCard ip={ip} key={index}/>
-            )
+    <div className="w-100 d-flex flex-column page-container background-magic-mint pt-rem-8">
+      <div className="ml-5">
+        <button
+          className={classnames('dashboard-button mr-3', {
+            'background-indigo text-magic-mint': active === 'MyIP',
+            'bg-white text-indigo': active != 'MyIP'
           })}
-        </>
-      )}
+          onClick={() => {
+            setActive('MyIP')
+            navigate(`/dashboard/myip`)
+          }}
+        >
+          My IP
+        </button>
+        <button
+          className={classnames('dashboard-button ml-2 mr-3', {
+            'background-indigo text-magic-mint': active === 'Request',
+            'bg-white text-indigo': active != 'Request'
+          })}
+          onClick={() => {
+            setActive('Request')
+            navigate(`/dashboard/request`)
+          }}
+        >
+          Request
+        </button>
+        <button
+          className={classnames('dashboard-button', {
+            'background-indigo text-magic-mint': active === 'SharedIP',
+            'bg-white text-indigo': active != 'SharedIP'
+          })}
+          onClick={() => {
+            setActive('SharedIP')
+            navigate(`/dashboard/sharedip`)
+          }}
+        >
+          Shared IP
+        </button>
+      </div>
+      <Outlet />
     </div>
   )
 }
