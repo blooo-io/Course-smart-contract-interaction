@@ -33,7 +33,8 @@ const IntellectualPropertyContainer = () => {
         description: ip.description,
         fileHash: ip.fileHash,
         fileName: ip.fileName,
-        ownerAddress: ip.ownerAddress
+        ownerAddress: ip.ownerAddress,
+        date: ip.date
       })
     })
     setIntellectualProperties(tempArray)

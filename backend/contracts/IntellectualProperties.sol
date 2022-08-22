@@ -12,13 +12,23 @@ contract IntellectualProperties {
     // --- Struct ---
 
     struct IntellectualProperty {
-        uint256 id;
         string firstName;
         string lastName;
         string description;
         string fileHash;
         string fileName;
+        uint256 date;
         address ownerAddress;
+        uint256 id;
+    }
+
+    struct FormInput {
+        string firstName;
+        string lastName;
+        string description;
+        string fileHash;
+        string fileName;
+        uint256 date;
     }
 
     struct Request {
@@ -69,36 +79,39 @@ contract IntellectualProperties {
     }
 
     function createIntellectualProperty(
-        string calldata _firstname,
-        string calldata _lastname,
-        string calldata _desc,
-        string calldata _fileHash,
-        string calldata _fileName
+        FormInput memory formInput
     ) external {
-        require(bytes(_firstname).length > 0);
-        require(bytes(_lastname).length > 0);
-        require(bytes(_fileHash).length > 0);
-        require(bytes(_fileName).length > 0);
+        require(bytes(formInput.firstName).length > 0);
+        require(bytes(formInput.lastName).length > 0);
+        require(bytes(formInput.fileHash).length > 0);
+        require(bytes(formInput.fileName).length > 0);
+
+        uint256 length = allIntellectualProperties.length;
+
+        if(length != 0){
+            require(allIntellectualProperties[length-1].date < formInput.date);
+        }
 
         intellectualPropertiesIds.increment();
         uint256 intellectualPropertyId = intellectualPropertiesIds.current();
         address _address = address(msg.sender);
         IntellectualProperty
             memory newIntellectualProperty = IntellectualProperty(
-                intellectualPropertyId,
-                _firstname,
-                _lastname,
-                _desc,
-                _fileHash,
-                _fileName,
-                _address
+                formInput.firstName,
+                formInput.lastName,
+                formInput.description,
+                formInput.fileHash,
+                formInput.fileName,
+                formInput.date,
+                _address,
+                intellectualPropertyId
             );
 
         intellectualProperties[_address].push(newIntellectualProperty);
         allIntellectualProperties.push(newIntellectualProperty);
         accounts[intellectualPropertyId] = msg.sender;
 
-        emit ipCreated(_address, _firstname, _lastname);
+        emit ipCreated(_address, formInput.firstName, formInput.lastName);
     }
 
     function getAllDeployedIntellectualProperties()

@@ -3,12 +3,13 @@ import { IntellectualProperty } from '../interfaces/IntellectualProperties'
 import getContract from '../utils/getContract'
 import Card from 'react-bootstrap/Card'
 import RequestModal from './RequestModal'
+import { BigNumber } from 'ethers'
 
 const IntellectualPropertyList = () => {
   const [contract, setContract] = useState(null)
   const [intellectualProperties, setIntellectualProperties] = useState([])
-  const [show, setShow] = useState(false);
-  const [ipId, setID] = useState<number | null>(null);
+  const [show, setShow] = useState(false)
+  const [ipId, setID] = useState<number | null>(null)
 
   useEffect(() => {
     setContract(getContract())
@@ -36,18 +37,24 @@ const IntellectualPropertyList = () => {
         description: ip.description,
         fileHash: ip.fileHash,
         fileName: ip.fileName,
-        ownerAddress: ip.ownerAddress
+        ownerAddress: ip.ownerAddress,
+        date: ip.date
       })
     })
     setIntellectualProperties(tempArray)
   }
 
-  const handleShow = (id:number) => {
-    console.log(id);
-    
+  const dateFormat = (ipDate : BigNumber) => {
+    const dateInNumber = parseInt(ipDate._hex, 16)
+    const date = new Date(dateInNumber)
+
+    return date.toTimeString()
+  }
+
+  const handleShow = (id: number) => {
     setShow(true)
     setID(id)
-  };
+  }
 
   return (
     <>
@@ -73,6 +80,9 @@ const IntellectualPropertyList = () => {
                           <Card.Text className="myip-text-card my-3">
                             Last name : {ip.lastName}
                           </Card.Text>
+                          <Card.Text className="myip-text-card my-3">
+                            Date : {dateFormat(ip.date)}
+                          </Card.Text>
                         </div>
                         <hr />
                         <Card.Text className="myip-text-card my-3">
@@ -80,7 +90,10 @@ const IntellectualPropertyList = () => {
                         </Card.Text>
                       </Card.Body>
                     </Card>
-                    <button className="list-button-request" onClick={() => handleShow(ip.id)}>
+                    <button
+                      className="list-button-request"
+                      onClick={() => handleShow(ip.id)}
+                    >
                       Send a download request
                     </button>
                   </div>
@@ -88,7 +101,7 @@ const IntellectualPropertyList = () => {
               }
             )}
           </div>
-          <RequestModal show={show} setShow={setShow} id={ipId}/>
+          <RequestModal show={show} setShow={setShow} id={ipId} />
         </div>
       )}
     </>

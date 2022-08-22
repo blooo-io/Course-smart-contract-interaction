@@ -33,11 +33,10 @@ const SharedIPContainer = () => {
         description: ip.description,
         fileHash: ip.fileHash,
         fileName: ip.fileName,
-        ownerAddress: ip.ownerAddress
+        ownerAddress: ip.ownerAddress,
+        date: ip.date
       })
     })
-    console.log(retrievedIPs);
-    
     setIntellectualProperties(tempArray)
   }
 

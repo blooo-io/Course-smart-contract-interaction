@@ -37,8 +37,6 @@ const RequestContainer = () => {
         requestor: request.requestor
       })
     })
-    console.log(tempArray)
-
     setRequests(tempArray)
   }
 

@@ -1,3 +1,5 @@
+import { BigNumber } from "ethers";
+
 export interface IntellectualProperty {
     id: number;
     firstName: string;
@@ -6,6 +8,7 @@ export interface IntellectualProperty {
     fileHash?: string;
     fileName?: string;
     ownerAddress?: string;
+    date: BigNumber;
 }
 
 export interface IntellectualPropertyFormData {

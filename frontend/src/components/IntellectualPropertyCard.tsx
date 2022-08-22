@@ -9,6 +9,13 @@ const IntellectualPropertyCard = (props: { ip: IntellectualProperty }) => {
     return ip.description.length > 300 ? `${ip.description.substring(0,300)}...` : ip.description;
   }
 
+  const dateFormat = () => {
+    const dateInNumber = parseInt(ip.date._hex, 16);
+    const date = new Date(dateInNumber);
+
+    return date.toTimeString();
+  }
+
   return (
     <div className='mr-5 w-30'>
       <Card className='myip-card w-100'>
@@ -17,6 +24,7 @@ const IntellectualPropertyCard = (props: { ip: IntellectualProperty }) => {
           <hr/>
           <Card.Text className='myip-text-card my-3'>First name : {ip.firstName}</Card.Text>
           <Card.Text className='myip-text-card my-3'>Last name : {ip.lastName}</Card.Text>
+          <Card.Text className='myip-text-card my-3'>Date : <span className='font-weight-normal'>{dateFormat()}</span></Card.Text>
           <Card.Text className='myip-text-card my-3'>Description : <span className='font-weight-normal'>{descriptionFormat()}</span></Card.Text>
           <hr/>
           <button className='myip-button-card'>Download ({ip.fileName}) </button>
