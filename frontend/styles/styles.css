@@ -289,3 +289,18 @@ h1.footer-title {
 span.reason-request {
   font-weight: 400;
 }
+
+.alert-success{
+  position: absolute;
+  top: 10%;
+  width: 30%;
+  background-color: rgba(102, 203, 198, 0.983);
+  border: solid 1px #122534;
+  color: #122534;
+}
+
+.alert-danger{
+  position: absolute;
+  top: 10%;
+  width: 30%;
+}
