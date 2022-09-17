@@ -4,12 +4,26 @@ import { ipfsService } from '../../services/ipfsService'
 import getContract from '../utils/getContract'
 import { Form, Button, Card } from 'react-bootstrap'
 
-export const CreateIntellectualPropertyForm = () => {
+/**
+ *  Component which handle the creation of an IP
+ * @component
+ * @category Home
+ * @return {Jsx}
+ */
+const CreateIntellectualPropertyForm = () => {
   const [selectedFile, setSelectedFile] = useState(null)
   const [contract, setContract] = useState(null)
   const [accounts, setAccounts] = useState([])
   const [validated, setValidated] = useState(false)
 
+  /**
+    * Fetch the contract object to interact with the contract
+    * @function
+    * @async
+    * @example
+    *
+    * fetchContract()
+    */
   const fetchContract = async () => {
     const provider = new ethers.providers.Web3Provider((window as any).ethereum)
     const accountsList = await provider.listAccounts()
@@ -23,12 +37,23 @@ export const CreateIntellectualPropertyForm = () => {
     fetchContract()
   }, [])
 
+  /**
+   * Upload the file into an IPFS service
+   * @function
+   * @async
+   * @returns {Promise}
+   */
   const IPFSUploadHandler = async (): Promise<string> => {
     const resp = await ipfsService.pinFileToIPFS(selectedFile)
     if (!resp.data.IpfsHash) throw Error('no IPFS Hash')
     return `https://gateway.pinata.cloud/ipfs/${resp.data.IpfsHash}`
   }
 
+  /**
+   * Submit the creation of an IP on the blockchain
+   * @function
+   * @param event Event object
+   */
   const registerIntellectualProperty = async (event) => {
     event.preventDefault()
     const form = event.currentTarget
@@ -40,6 +65,7 @@ export const CreateIntellectualPropertyForm = () => {
       const ipfsImageHash = await IPFSUploadHandler() // getting the IPFS Image Hash from the Pinata API Service
 
       const date = Date.now()
+      console.log(contract);
 
       contract.createIntellectualProperty({
         firstName: firstName.value,
@@ -104,3 +130,5 @@ export const CreateIntellectualPropertyForm = () => {
     </Form>
   )
 }
+
+export default CreateIntellectualPropertyForm;

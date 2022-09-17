@@ -1,0 +1,205 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SIPWB Documentation HomeIntroduction.tsx</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="_user.css">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">SIPWB Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/GuilaneDen/SIPWB-project"
+                        >
+                            Github
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Dashboard</h2><h3>Components</h3><ul><li><a href="IntellectualPropertyCard.html">IntellectualPropertyCard</a></li><li><a href="IntellectualPropertyContainer.html">IntellectualPropertyContainer</a></li></ul></div><div class="category"><h2>Footer</h2><h3>Components</h3><ul><li><a href="Footer.html">Footer</a></li></ul></div><div class="category"><h2>Home</h2><h3>Components</h3><ul><li><a href="CreateIntellectualPropertyForm.html">CreateIntellectualPropertyForm</a></li><li><a href="HomeIntroduction.html">HomeIntroduction</a></li></ul></div><div class="category"><h2>List</h2><h3>Components</h3><ul><li><a href="IntellectualPropertyList.html">IntellectualPropertyList</a></li></ul></div><div class="category"><h2>Navbar</h2><h3>Components</h3><ul><li><a href="NavbarTop.html">NavbarTop</a></li></ul></div><div class="category"><h2>Request</h2><h3>Components</h3><ul><li><a href="RequestCard.html">RequestCard</a></li><li><a href="RequestContainer.html">RequestContainer</a></li><li><a href="RequestModal.html">RequestModal</a></li></ul></div><div class="category"><h2>Shared IP</h2><h3>Components</h3><ul><li><a href="SharedIPContainer.html">SharedIPContainer</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>HomeIntroduction.tsx</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react'
+
+/**
+ *  Display the project summary on the Home page
+ * @component
+ * @category Home
+ * @return {Jsx}
+ */
+const HomeIntroduction = () => {
+  return (
+    &lt;div className="background-linear-gradient h-100 w-100">
+      &lt;div className='svg-div'>
+        &lt;svg
+          width="711"
+          height="779"
+          viewBox="0 0 711 779"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          &lt;path
+            d="M687.401 73.6371C685.919 239.919 669.461 365.842 622.009 470.884C573.608 578.027 491.861 665.761 355.049 752.073C234.288 675.303 152.732 593.888 100.49 487.637C49.0205 382.957 24.9504 252.058 22.6784 73.6202C85.0299 87.2513 136.167 90.4719 186.432 83.1161C240.713 75.1726 292.399 55.1023 354.437 25.2803C414.04 57.137 466.02 77.2319 521.391 84.6669C572.45 91.5229 624.97 87.4268 687.401 73.6371Z"
+            stroke="url(#paint0_linear_105_180)"
+            strokeOpacity="0.2"
+            strokeWidth="45"
+          />
+          &lt;defs>
+            &lt;linearGradient
+              id="paint0_linear_105_180"
+              x1="355.007"
+              y1="0"
+              x2="355.007"
+              y2="778.614"
+              gradientUnits="userSpaceOnUse"
+            >
+              &lt;stop stopColor="#4E7577" stopOpacity="0.76" />
+              &lt;stop offset="1" stopColor="#23445B" />
+            &lt;/linearGradient>
+          &lt;/defs>
+        &lt;/svg>
+      &lt;/div>
+      &lt;div className='h-100 d-flex justify-content-center flex-column align-middle px-5 mx-5'>
+        &lt;h1 className='text-magic-mint'>Secure Intellectual Properties With Blockchain&lt;/h1>
+        &lt;p className='text-white my-4'>
+          Inventors, designers, developers, and authors can protect the ideas
+          they have developed, for instance using copyright or patents. The aim
+          is to prevent others from wrongly profiting from their creations or
+          inventions. It also allows them to earn back the money they invested
+          in developing a product.
+        &lt;/p>
+        &lt;p className='text-white my-4'>
+          However, intellectual property fraud exists. It is when fake goods are
+          passed off as originals. It can include counterfeit products or piracy
+          of products from many industries, including health, music, film, and
+          fashion. Counterfeit goods can be produced with lower safety
+          standards, which can pose health and safety risks to those who buy
+          counterfeit goods. They also damage the reputation of the companies
+          that produce legitimate products.
+        &lt;/p>
+        &lt;p className='text-white my-4'>
+          Blockchain technology helps in cases of lack of trust. When
+          counterfeit goods can be produced, no document can be trusted without
+          verification. Therefore, blockchain technology accommodates itself as
+          a solution.
+        &lt;/p>
+        &lt;p className='text-white my-4'>
+          The principle is to write all the information about the intellectual
+          property on the blockchain to engrave it forever. The name of the
+          person who created the IP and the date of publication will be written
+          on the blockchain. Therefore, nobody can produce counterfeit goods.
+        &lt;/p>
+      &lt;/div>
+    &lt;/div>
+  )
+}
+
+export default HomeIntroduction
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

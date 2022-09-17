@@ -2,6 +2,12 @@ import React, { useState } from 'react'
 import classnames from 'classnames'
 import { Outlet, useNavigate } from 'react-router-dom'
 
+/**
+ *  Dashboard page
+ * @component
+ * @category Page
+ * @return {Jsx}
+ */
 const Dashboard = () => {
   const [active, setActive] = useState('MyIP')
   const navigate = useNavigate()

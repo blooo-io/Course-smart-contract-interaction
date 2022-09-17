@@ -2,13 +2,32 @@ import React from 'react'
 import { IntellectualProperty } from '../interfaces/IntellectualProperties'
 import { Card, Button } from 'react-bootstrap'
 
+
+/**
+ *  Component that display the IP as a card
+ * @component
+ * @category My IP
+ * @param {Object} props
+ * @param {Object} props.ip  Intellectual property object
+ * @return {Jsx}
+ */
 const IntellectualPropertyCard = (props: { ip: IntellectualProperty }) => {
   const { ip } = props
 
+  /**
+   * Function that format the description
+   * @function
+   * @returns {String}
+   */
   const descriptionFormat = () => {
     return ip.description.length > 300 ? `${ip.description.substring(0,300)}...` : ip.description;
   }
 
+  /**
+   * Function that format the date
+   * @function
+   * @returns {String}
+   */
   const dateFormat = () => {
     const dateInNumber = parseInt(ip.date._hex, 16);
     const date = new Date(dateInNumber);

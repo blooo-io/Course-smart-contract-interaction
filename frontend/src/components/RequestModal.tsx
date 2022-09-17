@@ -10,11 +10,26 @@ type Props = {
   id: number | null
 }
 
+/**
+ *  Component which send a download request
+ * @component
+ * @category Request
+ * @param {Object} props
+ * @param {Boolean} props.show      Boolean which open or close the modal
+ * @param {Function} props.setShow  Function to set the show variable
+ * @param {String} props.id         Intellectual property id
+ * @return {Jsx}
+ */
 const RequestModal = ({ show, setShow, id }: Props) => {
   const [contract, setContract] = useState(null)
   const [validated, setValidated] = useState(false)
   const [accounts, setAccounts] = useState<Array<string>>([])
 
+  /**
+   * Fetch the smart contract and the list of accounts
+   * @function
+   * @async
+   */
   const fetchContract = async () => {
     const provider = new ethers.providers.Web3Provider((window as any).ethereum)
     const accountsList = await provider.listAccounts()
@@ -23,8 +38,18 @@ const RequestModal = ({ show, setShow, id }: Props) => {
     setContract(getContract())
   }
 
+  /**
+   * Close the request modal
+   * @function
+   */
   const handleClose = () => setShow(false)
 
+  /**
+   * Create a request download transaction to the smart contract
+   * @function
+   * @async
+   * @param {Event} event Event object
+   */
   const handleSendRequest = async (event) => {
     event.preventDefault()
     const form = event.currentTarget
@@ -32,9 +57,9 @@ const RequestModal = ({ show, setShow, id }: Props) => {
     if (form.checkValidity() === false) {
       event.stopPropagation()
     } else {
-      const { description } = event.target // get the information from formdata
+      const { description } = event.target // get the description from event target
 
-      contract.requestDownload(id, description.value) // call the registerIntellectualProperty Contract Function
+      contract.requestDownload(id, description.value) // call the requestDownload Contract Function
 
       handleClose()
     }

@@ -1,5 +1,10 @@
 import React from 'react'
-
+/**
+ *  Footer
+ * @component
+ * @category Layout
+ * @return {Jsx}
+ */
 const Footer = () => {
   return (
     <div className='footer'>

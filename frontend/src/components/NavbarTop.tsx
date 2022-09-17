@@ -3,6 +3,12 @@ import classnames from 'classnames'
 
 import { Container, Nav, Navbar } from 'react-bootstrap'
 
+/**
+ *  Navbar component
+ * @component
+ * @category Layout
+ * @return {Jsx}
+ */
 const NavbarTop = () => {
 
   return (

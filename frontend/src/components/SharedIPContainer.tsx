@@ -3,6 +3,12 @@ import { IntellectualProperty } from '../interfaces/IntellectualProperties'
 import getContract from '../utils/getContract'
 import IntellectualPropertyCard from '../components/IntellectualPropertyCard'
 
+/**
+ *  Component that contain the shared IP
+ * @component
+ * @category Shared IP
+ * @return {Jsx}
+ */
 const SharedIPContainer = () => {
   const [contract, setContract] = useState(null)
   const [intellectualProperties, setIntellectualProperties] = useState([])
@@ -21,6 +27,11 @@ const SharedIPContainer = () => {
     }
   }, [contract])
 
+  /**
+   * Get all the shared IP of the user
+   * @function
+   * @async
+   */
   async function getAllIPs() {
     const retrievedIPs = await contract.getAllMySharedIntellectualProperties()
 

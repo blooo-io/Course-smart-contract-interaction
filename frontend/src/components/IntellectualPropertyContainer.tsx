@@ -3,6 +3,12 @@ import { IntellectualProperty } from '../interfaces/IntellectualProperties'
 import getContract from '../utils/getContract'
 import IntellectualPropertyCard from '../components/IntellectualPropertyCard'
 
+/**
+ *  Component which contain the property card
+ * @component
+ * @category My IP
+ * @return {Jsx}
+ */
 const IntellectualPropertyContainer = () => {
   const [contract, setContract] = useState(null)
   const [intellectualProperties, setIntellectualProperties] = useState([])
@@ -21,6 +27,11 @@ const IntellectualPropertyContainer = () => {
     }
   }, [contract])
 
+  /**
+   * Function that get the array of the user IP
+   * @function
+   * @async
+   */
   async function getAllIPs() {
     const retrievedIPs = await contract.getMyIntellectualProperties()
 

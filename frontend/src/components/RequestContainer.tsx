@@ -3,6 +3,12 @@ import getContract from '../utils/getContract'
 import { Request } from '../interfaces/IntellectualProperties'
 import RequestCard from './RequestCard'
 
+/**
+ *  Component that contain the request card
+ * @component
+ * @category Request
+ * @return {Jsx}
+ */
 const RequestContainer = () => {
   const [contract, setContract] = useState(null)
   const [requests, setRequests] = useState([])
@@ -25,6 +31,11 @@ const RequestContainer = () => {
     }
   }, [contract])
 
+  /**
+   * Function that gets all the requests
+   * @function
+   * @async
+   */
   async function getAllRequests() {
     const retrievedRequests = await contract.getAllMyRequest()
 

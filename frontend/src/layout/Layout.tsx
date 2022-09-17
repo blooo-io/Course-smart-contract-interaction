@@ -14,6 +14,12 @@ import IntellectualPropertyContainer from '../components/IntellectualPropertyCon
 import RequestContainer from '../components/RequestContainer'
 import SharedIPContainer from '../components/SharedIPContainer'
 
+/**
+ *  Layout component
+ * @component
+ * @category Layout
+ * @return {Jsx}
+ */
 const Layout = () => {
   return (
     <Router>

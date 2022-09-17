@@ -1,0 +1,199 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SIPWB Documentation components/SharedIPContainer.tsx</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="_user.css">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">SIPWB Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/GuilaneDen/SIPWB-project"
+                        >
+                            Github
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Interfaces</h3><ul><li><a href="IntellectualProperty.html">IntellectualProperty</a></li><li><a href="IntellectualPropertyFormData.html">IntellectualPropertyFormData</a></li><li><a href="Request.html">Request</a></li></ul></div><div class="category"><h2>Home</h2><h3>Components</h3><ul><li><a href="CreateIntellectualPropertyForm.html">CreateIntellectualPropertyForm</a></li><li><a href="HomeIntroduction.html">HomeIntroduction</a></li></ul></div><div class="category"><h2>Layout</h2><h3>Components</h3><ul><li><a href="Footer.html">Footer</a></li><li><a href="Layout.html">Layout</a></li><li><a href="NavbarTop.html">NavbarTop</a></li></ul></div><div class="category"><h2>List</h2><h3>Components</h3><ul><li><a href="IntellectualPropertyList.html">IntellectualPropertyList</a></li></ul></div><div class="category"><h2>My IP</h2><h3>Components</h3><ul><li><a href="IntellectualPropertyCard.html">IntellectualPropertyCard</a></li><li><a href="IntellectualPropertyContainer.html">IntellectualPropertyContainer</a></li></ul></div><div class="category"><h2>Page</h2><h3>Components</h3><ul><li><a href="App.html">App</a></li><li><a href="Dashboard.html">Dashboard</a></li><li><a href="List.html">List</a></li></ul></div><div class="category"><h2>Request</h2><h3>Components</h3><ul><li><a href="RequestCard.html">RequestCard</a></li><li><a href="RequestContainer.html">RequestContainer</a></li><li><a href="RequestModal.html">RequestModal</a></li></ul></div><div class="category"><h2>Shared IP</h2><h3>Components</h3><ul><li><a href="SharedIPContainer.html">SharedIPContainer</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>components/SharedIPContainer.tsx</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useEffect, useState } from 'react'
+import { IntellectualProperty } from '../interfaces/IntellectualProperties'
+import getContract from '../utils/getContract'
+import IntellectualPropertyCard from '../components/IntellectualPropertyCard'
+
+/**
+ *  Component that contain the shared IP
+ * @component
+ * @category Shared IP
+ * @return {Jsx}
+ */
+const SharedIPContainer = () => {
+  const [contract, setContract] = useState(null)
+  const [intellectualProperties, setIntellectualProperties] = useState([])
+
+  useEffect(() => {
+    setContract(getContract())
+  }, [])
+
+  useEffect(() => {
+    if (contract) {
+      getAllIPs()
+
+      contract.on('ipCreated', async function () {
+        getAllIPs()
+      })
+    }
+  }, [contract])
+
+  /**
+   * Get all the shared IP of the user
+   * @function
+   * @async
+   */
+  async function getAllIPs() {
+    const retrievedIPs = await contract.getAllMySharedIntellectualProperties()
+
+    const tempArray: any = []
+    retrievedIPs.forEach((ip: IntellectualProperty) => {
+      tempArray.push({
+        id: ip.id,
+        firstName: ip.firstName,
+        lastName: ip.lastName,
+        description: ip.description,
+        fileHash: ip.fileHash,
+        fileName: ip.fileName,
+        ownerAddress: ip.ownerAddress,
+        date: ip.date
+      })
+    })
+    setIntellectualProperties(tempArray)
+  }
+
+
+  return (
+    &lt;>
+      {intellectualProperties.length > 0 &amp;&amp; (
+        &lt;div className='pt-rem-8 ml-5 d-flex flew-row'>
+          {intellectualProperties.map(
+            (ip: IntellectualProperty, index: number) => {
+              return &lt;IntellectualPropertyCard ip={ip} key={index} />
+            }
+          )}
+        &lt;/div>
+      )}
+    &lt;/>
+  )
+}
+
+export default SharedIPContainer
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

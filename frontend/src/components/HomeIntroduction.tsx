@@ -1,5 +1,11 @@
 import React from 'react'
 
+/**
+ *  Display the project summary on the Home page
+ * @component
+ * @category Home
+ * @return {Jsx}
+ */
 const HomeIntroduction = () => {
   return (
     <div className="background-linear-gradient h-100 w-100">

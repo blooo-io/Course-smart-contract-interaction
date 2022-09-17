@@ -1,7 +1,13 @@
 import React, { ReactElement } from 'react'
-import { CreateIntellectualPropertyForm } from '../components/CreateIntellectualPropertyForm'
+import CreateIntellectualPropertyForm from '../components/CreateIntellectualPropertyForm'
 import HomeIntroduction from '../components/HomeIntroduction'
 
+/**
+ *  Home page
+ * @component
+ * @category Page
+ * @return {Jsx}
+ */
 function App(): ReactElement {
   return (
     <>

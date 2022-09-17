@@ -1,0 +1,41 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc", "closure"]
+  },
+  "source": {
+    "include": ["./src"],
+    "includePattern": ".ts*",
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "plugins": [
+    "plugins/markdown",
+    "node_modules/better-docs/typescript",
+    "node_modules/better-docs/category",
+    "node_modules/better-docs/component"
+  ],
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "better-docs": {
+      "name": "SIPWB Documentation",
+      "title": "SIPWB Documentation",
+      "css": "_user.css",
+      "hideGenerator": false,
+      "navLinks": [
+        {
+          "label": "Github",
+          "href": "https://github.com/GuilaneDen/SIPWB-project"
+        }
+      ]
+    }
+  },
+  "opts": {
+    "encoding": "utf8",
+    "readme": "./README.md",
+    "destination": "docs/",
+    "recurse": true,
+    "verbose": true,
+    "template": "node_modules/better-docs/"
+  }
+}

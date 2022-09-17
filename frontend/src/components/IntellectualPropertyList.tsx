@@ -5,6 +5,12 @@ import Card from 'react-bootstrap/Card'
 import RequestModal from './RequestModal'
 import { BigNumber } from 'ethers'
 
+/**
+ *  Component that display the List of IP that has been saved since the beginning
+ * @component
+ * @category List
+ * @return {Jsx}
+ */
 const IntellectualPropertyList = () => {
   const [contract, setContract] = useState(null)
   const [intellectualProperties, setIntellectualProperties] = useState([])
@@ -25,6 +31,13 @@ const IntellectualPropertyList = () => {
     }
   }, [contract])
 
+
+  /**
+   * Function that format the description
+   * @function
+   * @async
+   * @returns {String}
+   */
   async function getAllIPs() {
     const retrievedIPs = await contract.getAllDeployedIntellectualProperties()
 
@@ -44,6 +57,12 @@ const IntellectualPropertyList = () => {
     setIntellectualProperties(tempArray)
   }
 
+
+  /**
+   * Function that format the date
+   * @function
+   * @returns {String}
+   */
   const dateFormat = (ipDate : BigNumber) => {
     const dateInNumber = parseInt(ipDate._hex, 16)
     const date = new Date(dateInNumber)
@@ -51,6 +70,10 @@ const IntellectualPropertyList = () => {
     return date.toTimeString()
   }
 
+  /**
+   * Triger the modal and set the IP id
+   * @param id ID of the intellectual property
+   */
   const handleShow = (id: number) => {
     setShow(true)
     setID(id)

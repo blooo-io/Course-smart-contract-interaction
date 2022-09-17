@@ -7,9 +7,22 @@ type Props = {
   request: Request
 }
 
+/**
+ *  Component that display the request as a card
+ * @component
+ * @category Request
+ * @param {Object} props
+ * @param {Object} props.request  Request object
+ * @return {Jsx}
+ */
 const RequestCard = ({ request }: Props) => {
   const [contract, setContract] = useState(null)
 
+  /**
+   * Function that fetch the contract
+   * @function
+   * @async
+   */
   const fetchContract = async () => {
     setContract(getContract())
   }
@@ -18,12 +31,20 @@ const RequestCard = ({ request }: Props) => {
     fetchContract()
   }, [])
 
+  /**
+   * Function that decline a request
+   * @function
+   */
   const declineRequest = () => {
     contract.declineRequest(
       request.id
     ) // call the declineRequest Contract Function
   }
 
+  /**
+   * Function that accept a request
+   * @function
+   */
   const acceptRequest = async () => {
     contract.acceptRequest(
       request.id
