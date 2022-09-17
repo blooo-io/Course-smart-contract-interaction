@@ -17,7 +17,7 @@ const NavbarTop = () => {
         <Navbar.Brand
           href="/home"
           className={classnames("font-weight-bold",{
-            'text-magic-mint': window.location.href.includes('home'),
+            'text-logo': window.location.href.includes('home'),
             'text-indigo': !window.location.href.includes('home'),
           })}
         >

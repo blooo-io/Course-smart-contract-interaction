@@ -14,8 +14,8 @@ h1 {
   font-family: 'space_grotesklight' !important;
   font-style: normal !important;
   font-weight: 700 !important;
-  font-size: 43px !important;
-  line-height: 43px !important;
+  font-size: 24px !important;
+  line-height: 24px !important;
 }
 
 p {
@@ -39,10 +39,6 @@ hr {
   position: absolute;
   top: 0px;
   width: 100%;
-}
-
-.page-container {
-  height: calc(100% - 100px);
 }
 
 .card-form {
@@ -290,7 +286,7 @@ span.reason-request {
   font-weight: 400;
 }
 
-.alert-success{
+.alert-success {
   position: absolute;
   top: 10%;
   width: 30%;
@@ -299,8 +295,51 @@ span.reason-request {
   color: #122534;
 }
 
-.alert-danger{
+.alert-danger {
   position: absolute;
   top: 10%;
   width: 30%;
+}
+
+.fs-1 {
+  font-size: 16px;
+}
+
+
+.text-logo{
+  color: #1e3e57fa !important
+}
+
+@media screen and (min-width: 992px) {
+  .page-container {
+    height: calc(100% - 100px);
+  }
+
+  .fs-1 {
+    font-size: 24px;
+  }
+
+  h1 {
+    font-family: 'space_grotesklight' !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    font-size: 43px !important;
+    line-height: 43px !important;
+  }
+
+  .text-logo{
+    color: #adf4df !important
+  }
+
+  .vh-sm-100{
+    height: 100vh;
+  }
+
+  .h-sm-100{
+    height: 100%;
+  }
+
+  .w-sm-100{
+    width: 100% ;
+  }
 }

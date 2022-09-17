@@ -8,8 +8,8 @@ import React from 'react'
  */
 const HomeIntroduction = () => {
   return (
-    <div className="background-linear-gradient h-100 w-100">
-      <div className='svg-div'>
+    <div className="background-linear-gradient h-sm-100 w-sm-100">
+      <div className='svg-div d-none d-lg-block'>
         <svg
           width="711"
           height="779"
@@ -38,16 +38,16 @@ const HomeIntroduction = () => {
           </defs>
         </svg>
       </div>
-      <div className='h-100 d-flex justify-content-center flex-column align-middle px-5 mx-5'>
-        <h1 className='text-magic-mint'>Secure Intellectual Properties With Blockchain</h1>
-        <p className='text-white my-4'>
+      <div className='h-sm-100 d-flex justify-content-center flex-column align-middle px-lg-5 mx-5'>
+        <h1 className='text-magic-mint fs-2 mt-5 mt-lg-0'>Secure Intellectual Properties With Blockchain</h1>
+        <p className='text-white fs-1 my-4'>
           Inventors, designers, developers, and authors can protect the ideas
           they have developed, for instance using copyright or patents. The aim
           is to prevent others from wrongly profiting from their creations or
           inventions. It also allows them to earn back the money they invested
           in developing a product.
         </p>
-        <p className='text-white my-4'>
+        <p className='text-white fs-1 my-4'>
           However, intellectual property fraud exists. It is when fake goods are
           passed off as originals. It can include counterfeit products or piracy
           of products from many industries, including health, music, film, and
@@ -56,13 +56,13 @@ const HomeIntroduction = () => {
           counterfeit goods. They also damage the reputation of the companies
           that produce legitimate products.
         </p>
-        <p className='text-white my-4'>
+        <p className='text-white fs-1 my-4'>
           Blockchain technology helps in cases of lack of trust. When
           counterfeit goods can be produced, no document can be trusted without
           verification. Therefore, blockchain technology accommodates itself as
           a solution.
         </p>
-        <p className='text-white my-4'>
+        <p className='text-white fs-1 my-4'>
           The principle is to write all the information about the intellectual
           property on the blockchain to engrave it forever. The name of the
           person who created the IP and the date of publication will be written

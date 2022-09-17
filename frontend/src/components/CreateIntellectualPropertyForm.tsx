@@ -135,7 +135,7 @@ const CreateIntellectualPropertyForm = () => {
         </Alert>
       )}
       <Form
-        className="align-self-center w-75"
+        className="align-self-center w-75 pt-5 pb-5 pt-lg-0 pb-lg-0"
         noValidate
         validated={validated}
         onSubmit={registerIntellectualProperty}
@@ -180,7 +180,7 @@ const CreateIntellectualPropertyForm = () => {
         <div className="d-flex justify-content-center">
           <Button
             type="submit"
-            className="background-indigo text-magic-mint w-50 mt-3 py-3 button-form"
+            className="background-indigo text-magic-mint w-100 w-md-50 mt-3 py-3 button-form"
           >
             Submit form
           </Button>
