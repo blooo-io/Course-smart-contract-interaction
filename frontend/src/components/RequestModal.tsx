@@ -3,6 +3,8 @@ import Modal from 'react-bootstrap/Modal'
 import getContract from '../utils/getContract'
 import Form from 'react-bootstrap/Form'
 import { ethers } from 'ethers'
+import Alert from 'react-bootstrap/Alert'
+import classNames from 'classnames'
 
 type Props = {
   show: boolean
@@ -24,6 +26,10 @@ const RequestModal = ({ show, setShow, id }: Props) => {
   const [contract, setContract] = useState(null)
   const [validated, setValidated] = useState(false)
   const [accounts, setAccounts] = useState<Array<string>>([])
+  const [alert, setAlert] = useState(false)
+  const [alertVariant, setAlertVariant] = useState('')
+  const [alertMessage, setAlertMessage] = useState('')
+  const [first, setFirst] = useState(true)
 
   /**
    * Fetch the smart contract and the list of accounts
@@ -59,7 +65,23 @@ const RequestModal = ({ show, setShow, id }: Props) => {
     } else {
       const { description } = event.target // get the description from event target
 
-      contract.requestDownload(id, description.value) // call the requestDownload Contract Function
+      contract.once(
+        'requestCreated',
+        async function (reqestId: Number, address: String) {
+          setAlert(true)
+          setAlertVariant('success')
+          setAlertMessage(`${address} a envoyé une requête de téléchargement`)
+        }
+      )
+
+      contract.requestDownload(id, description.value).catch((error) => {
+        if (error.code === 4001) {
+          //user rejected the transaction
+          setAlert(true)
+          setAlertVariant('danger')
+          setAlertMessage(`user rejected the transaction`)
+        }
+      }) // call the requestDownload Contract Function
 
       handleClose()
     }
@@ -70,8 +92,29 @@ const RequestModal = ({ show, setShow, id }: Props) => {
     fetchContract()
   }, [])
 
+  useEffect(() => {
+    if (contract && first) {
+      contract.on('requestCreated', async function () {})
+      return () => {
+        contract.off('requestCreated', () => setFirst(false))
+      }
+    }
+  }, [contract, first])
+
   return (
     <>
+      {alert && (
+        <div className='d-flex justify-content-center'>
+          <Alert
+            className={classNames('text-center', {
+              'alert-success': alertVariant === 'success'
+            })}
+            variant={alertVariant}
+          >
+            {alertMessage}
+          </Alert>
+        </div>
+      )}
       <Modal show={show} onHide={handleClose}>
         <Form
           className="align-self-center w-75"
@@ -100,7 +143,11 @@ const RequestModal = ({ show, setShow, id }: Props) => {
           </Form.Group>
 
           <div className="d-flex justify-content-center mb-4">
-            <button className="cancel-button mr-2" onClick={handleClose}>
+            <button
+              className="cancel-button mr-2"
+              onClick={handleClose}
+              type="button"
+            >
               Cancel
             </button>
             <button className="send-button" type="submit">

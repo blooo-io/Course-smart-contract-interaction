@@ -55,7 +55,7 @@ const RequestContainer = () => {
   return (
     <div
       className={classNames('pt-rem-8 ml-lg-5 d-flex flex-column flex-lg-row', {
-        'vh-100': requests.length === 0
+        'vh-100': requests.length < 2
       })}
     >
       {requests.length > 0 && (

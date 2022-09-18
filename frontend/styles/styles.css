@@ -162,7 +162,6 @@ h1.footer-title {
   border-radius: 4px;
 }
 .list-button {
-  width: 500px;
   height: 59px;
 
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -221,7 +220,6 @@ h1.footer-title {
   font-style: normal;
   font-weight: 700;
   font-size: 21px;
-  line-height: 16px;
   /* or 133% */
   background-color: #1e3e57;
   color: #adf4df;
@@ -237,8 +235,8 @@ h1.footer-title {
 .cancel-button {
   width: 182px;
   height: 40px;
-  color: white;
-  background-color: #ff545e;
+  color: white !important;
+  background-color: #ff545e !important;
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
 }
@@ -290,7 +288,6 @@ span.reason-request {
 .alert-success {
   position: absolute;
   top: 10%;
-  width: 30%;
   background-color: rgba(102, 203, 198, 0.983);
   border: solid 1px #122534;
   color: #122534;
@@ -299,23 +296,41 @@ span.reason-request {
 .alert-danger {
   position: absolute;
   top: 10%;
-  width: 30%;
 }
 
 .fs-1 {
   font-size: 16px;
 }
 
-
-.text-logo{
-  color: #1e3e57fa !important
+.text-logo {
+  color: #1e3e57fa !important;
 }
 
 @media screen and (min-width: 992px) {
-  .w-lg-30{
-    width: 100%;
+  .w-lg-30 {
+    width: 30%;
   }
 
+  .alert-danger {
+    position: absolute;
+    top: 10%;
+  }
+  .alert-success {
+    position: absolute;
+    top: 10%;
+    width: 30%;
+    background-color: rgba(102, 203, 198, 0.983);
+    border: solid 1px #122534;
+    color: #122534;
+  }
+
+  .list-button {
+    width: 500px;
+    height: 59px;
+
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+  }
   .dashboard-button {
     width: 225px;
     height: 59px;
@@ -340,19 +355,19 @@ span.reason-request {
     line-height: 43px !important;
   }
 
-  .text-logo{
-    color: #adf4df !important
+  .text-logo {
+    color: #adf4df !important;
   }
 
-  .vh-sm-100{
+  .vh-sm-100 {
     height: 100vh;
   }
 
-  .h-sm-100{
+  .h-sm-100 {
     height: 100%;
   }
 
-  .w-sm-100{
-    width: 100% ;
+  .w-sm-100 {
+    width: 100%;
   }
 }

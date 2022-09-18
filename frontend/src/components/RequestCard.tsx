@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Request } from '../interfaces/IntellectualProperties'
 import Card from 'react-bootstrap/Card'
 import getContract from '../utils/getContract'
+import Alert from 'react-bootstrap/Alert'
+import classNames from 'classnames'
 
 type Props = {
   request: Request
@@ -17,6 +19,10 @@ type Props = {
  */
 const RequestCard = ({ request }: Props) => {
   const [contract, setContract] = useState(null)
+  const [alert, setAlert] = useState(false)
+  const [alertVariant, setAlertVariant] = useState('')
+  const [alertMessage, setAlertMessage] = useState('')
+  const [first, setFirst] = useState(true)
 
   /**
    * Function that fetch the contract
@@ -31,14 +37,38 @@ const RequestCard = ({ request }: Props) => {
     fetchContract()
   }, [])
 
+  useEffect(() => {
+    if (contract && first) {
+      contract.on('requestAnswered', async function () {})
+      return () => {
+        contract.off('requestAnswered', () => setFirst(false))
+      }
+    }
+  }, [contract, first])
+
   /**
    * Function that decline a request
    * @function
    */
   const declineRequest = () => {
+    contract.once(
+      'requestAnswered',
+      async function () {
+        setAlert(true)
+        setAlertVariant('success')
+        setAlertMessage(`La requête a été décliné.`)
+      }
+    )
     contract.declineRequest(
       request.id
-    ) // call the declineRequest Contract Function
+    ).catch((error) => {
+      if (error.code === 4001) {
+        //user rejected the transaction
+        setAlert(true)
+        setAlertVariant('danger')
+        setAlertMessage(`user rejected the transaction`)
+      }
+    }) // call the declineRequest Contract Function
   }
 
   /**
@@ -46,13 +76,40 @@ const RequestCard = ({ request }: Props) => {
    * @function
    */
   const acceptRequest = async () => {
+    contract.once(
+      'requestAnswered',
+      async function () {
+        setAlert(true)
+        setAlertVariant('success')
+        setAlertMessage(`La requête a été accepté.`)
+      }
+    )
     contract.acceptRequest(
       request.id
-    ) // call the acceptRequest Contract Function
+    ).catch((error) => {
+      if (error.code === 4001) {
+        //user rejected the transaction
+        setAlert(true)
+        setAlertVariant('danger')
+        setAlertMessage(`user rejected the transaction`)
+      }
+    }) // call the acceptRequest Contract Function
   }
 
   return (
-    <div className="mr-5 mb-5 w-100 d-flex flex-row">
+    <div className="mr-5 mb-5 w-100 d-flex flex-column flex-lg-row">
+      {alert && (
+        <div className='d-flex justify-content-center'>
+          <Alert
+            className={classNames('text-center', {
+              'alert-success': alertVariant === 'success'
+            })}
+            variant={alertVariant}
+          >
+            {alertMessage}
+          </Alert>
+        </div>
+      )}
       <Card className="myip-card w-100 mr-3">
         <Card.Body>
           <Card.Text className="request-text-card mb-3 text-center ">
@@ -65,11 +122,11 @@ const RequestCard = ({ request }: Props) => {
           </Card.Text>
         </Card.Body>
       </Card>
-      <div className="d-flex flex-column justify-content-around">
-        <button className="request-accept-button" onClick={acceptRequest}>
+      <div className="d-flex flex-row flex-lg-column justify-content-around mt-3 mt-lg-0">
+        <button className="request-accept-button mx-2 mx-lg-0" onClick={acceptRequest}>
           Accept
         </button>
-        <button className="request-decline-button" onClick={declineRequest}>
+        <button className="request-decline-button mx-2 mx-lg-0" onClick={declineRequest}>
           Decline
         </button>
       </div>

@@ -25,12 +25,17 @@ const IntellectualPropertyList = () => {
     if (contract) {
       getAllIPs()
 
+      contract.on('requestCreated', async function () {})
+
       contract.on('ipCreated', async function () {
         getAllIPs()
       })
+
+      return () => {
+        contract.off('requestCreated', async function () {})
+      }
     }
   }, [contract])
-
 
   /**
    * Function that format the description
@@ -57,13 +62,12 @@ const IntellectualPropertyList = () => {
     setIntellectualProperties(tempArray)
   }
 
-
   /**
    * Function that format the date
    * @function
    * @returns {String}
    */
-  const dateFormat = (ipDate : BigNumber) => {
+  const dateFormat = (ipDate: BigNumber) => {
     const dateInNumber = parseInt(ipDate._hex, 16)
     const date = new Date(dateInNumber)
 
@@ -82,7 +86,7 @@ const IntellectualPropertyList = () => {
   return (
     <>
       {intellectualProperties.length > 0 && (
-        <div className="w-100 h-100 pt-rem-8 mx-5 d-flex flex-column">
+        <div className="w-100 h-100 pt-rem-8 mx-lg-5 d-flex flex-column mb-3 mb-lg-0">
           <button className="list-button mx-2 background-indigo text-magic-mint">
             List of all intellectual properties saved on the smart contract
           </button>
@@ -90,10 +94,13 @@ const IntellectualPropertyList = () => {
             {intellectualProperties.map(
               (ip: IntellectualProperty, index: number) => {
                 return (
-                  <div className="mt-5 w-100 d-flex flex-row" key={index}>
+                  <div
+                    className="mt-5 w-100 d-flex flex-column flex-lg-row"
+                    key={index}
+                  >
                     <Card className="myip-card w-100 mr-4">
                       <Card.Body className="d-flex flex-column">
-                        <div className="d-flex flex-row justify-content-around">
+                        <div className="d-flex flex-column flex-lg-row justify-content-around">
                           <Card.Text className="myip-text-card my-3">
                             Owner address : {ip.ownerAddress}
                           </Card.Text>
@@ -114,7 +121,7 @@ const IntellectualPropertyList = () => {
                       </Card.Body>
                     </Card>
                     <button
-                      className="list-button-request"
+                      className="list-button-request mt-3 mt-lg-0"
                       onClick={() => handleShow(ip.id)}
                     >
                       Send a download request

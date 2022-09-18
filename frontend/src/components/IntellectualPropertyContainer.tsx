@@ -55,7 +55,7 @@ const IntellectualPropertyContainer = () => {
   return (
     <div
       className={classNames('pt-rem-8 ml-lg-5 d-flex flex-column flex-lg-row', {
-        'vh-100': intellectualProperties.length === 0
+        'vh-100': intellectualProperties.length < 2
       })}
     >
       {intellectualProperties.length > 0 && (
