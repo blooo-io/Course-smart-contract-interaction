@@ -154,7 +154,8 @@ h1.footer-title {
 }
 
 .dashboard-button {
-  width: 225px;
+  width: fit-content;
+  padding: 0px 10px;
   height: 59px;
   font-size: 20px;
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -311,6 +312,18 @@ span.reason-request {
 }
 
 @media screen and (min-width: 992px) {
+  .w-lg-30{
+    width: 100%;
+  }
+
+  .dashboard-button {
+    width: 225px;
+    height: 59px;
+    font-size: 20px;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+  }
+
   .page-container {
     height: calc(100% - 100px);
   }

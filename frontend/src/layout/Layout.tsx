@@ -23,7 +23,7 @@ import SharedIPContainer from '../components/SharedIPContainer'
 const Layout = () => {
   return (
     <Router>
-      <div className="w-md-full d-flex flex-column">
+      <div className="w-full d-flex flex-column">
         <NavbarTop />
 
         {/* A <Routes> looks through its children <Route>s and

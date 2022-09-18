@@ -14,7 +14,7 @@ const Dashboard = () => {
 
   return (
     <div className="w-100 d-flex flex-column page-container background-magic-mint pt-rem-8">
-      <div className="ml-5">
+      <div className="ml-5 d-flex flex-row">
         <button
           className={classnames('dashboard-button mr-3', {
             'background-indigo text-magic-mint': active === 'MyIP',

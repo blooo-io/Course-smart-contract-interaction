@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import getContract from '../utils/getContract'
 import { Request } from '../interfaces/IntellectualProperties'
 import RequestCard from './RequestCard'
+import classNames from 'classnames'
 
 /**
  *  Component that contain the request card
@@ -52,15 +53,19 @@ const RequestContainer = () => {
   }
 
   return (
-    <>
+    <div
+      className={classNames('pt-rem-8 ml-lg-5 d-flex flex-column flex-lg-row', {
+        'vh-100': requests.length === 0
+      })}
+    >
       {requests.length > 0 && (
-        <div className="pt-rem-8 mx-5 d-flex flex-column">
+        <>
           {requests.map((request: Request, index: number) => {
             return <RequestCard request={request} key={index} />
           })}
-        </div>
+        </>
       )}
-    </>
+    </div>
   )
 }
 

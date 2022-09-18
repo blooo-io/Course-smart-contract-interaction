@@ -36,7 +36,7 @@ const IntellectualPropertyCard = (props: { ip: IntellectualProperty }) => {
   }
 
   return (
-    <div className='mr-5 w-30'>
+    <div className='mx-3 mx-lg-0 mb-5 mb-lg-0 mr-lg-5 w-lg-30'>
       <Card className='myip-card w-100'>
         <Card.Body>
           <Card.Title className='myip-text-card myip-title-card'>{ip.firstName}</Card.Title>
