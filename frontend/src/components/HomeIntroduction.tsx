@@ -39,34 +39,16 @@ const HomeIntroduction = () => {
         </svg>
       </div>
       <div className='h-sm-100 d-flex justify-content-center flex-column align-middle px-lg-5 mx-5'>
-        <h1 className='text-magic-mint fs-2 mt-5 mt-lg-0'>Secure Intellectual Properties With Blockchain</h1>
+        <h1 className='text-magic-mint fs-2 mt-5 mt-lg-0'>Automotive Traceability</h1>
         <p className='text-white fs-1 my-4'>
-          Inventors, designers, developers, and authors can protect the ideas
-          they have developed, for instance using copyright or patents. The aim
-          is to prevent others from wrongly profiting from their creations or
-          inventions. It also allows them to earn back the money they invested
-          in developing a product.
+          Automotive traceability is a critical aspect of the automotive industry.
+          It refers to the ability to track a vehicle's entire life cycle from its manufacture to its end-of-life disposal.
+          Automotive traceability is essential for ensuring quality, improving efficiency, and ensuring consumer safety.
+          Blockchain technology has emerged as a promising solution for achieving automotive traceability.
         </p>
         <p className='text-white fs-1 my-4'>
-          However, intellectual property fraud exists. It is when fake goods are
-          passed off as originals. It can include counterfeit products or piracy
-          of products from many industries, including health, music, film, and
-          fashion. Counterfeit goods can be produced with lower safety
-          standards, which can pose health and safety risks to those who buy
-          counterfeit goods. They also damage the reputation of the companies
-          that produce legitimate products.
-        </p>
-        <p className='text-white fs-1 my-4'>
-          Blockchain technology helps in cases of lack of trust. When
-          counterfeit goods can be produced, no document can be trusted without
-          verification. Therefore, blockchain technology accommodates itself as
-          a solution.
-        </p>
-        <p className='text-white fs-1 my-4'>
-          The principle is to write all the information about the intellectual
-          property on the blockchain to engrave it forever. The name of the
-          person who created the IP and the date of publication will be written
-          on the blockchain. Therefore, nobody can produce counterfeit goods.
+          Blockchain technology provides a decentralized, immutable, and transparent ledger that can record transactions in a secure and tamper-proof way.
+          In the context of the automotive industry, a blockchain can be used to record every step in a vehicle's life cycle, including its production, shipping, sale, maintenance, and disposal.
         </p>
       </div>
     </div>
