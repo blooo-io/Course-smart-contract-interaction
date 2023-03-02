@@ -8,11 +8,8 @@ import {
 import Dashboard from '../pages/Dashboard'
 import Home from '../pages/Home'
 import NavbarTop from '../components/NavbarTop'
-import List from '../pages/List'
 import Footer from '../components/Footer'
-import IntellectualPropertyContainer from '../components/IntellectualPropertyContainer'
-import RequestContainer from '../components/RequestContainer'
-import SharedIPContainer from '../components/SharedIPContainer'
+import CarsContainer from '../components/CarsContainer'
 
 /**
  *  Layout component
@@ -31,12 +28,8 @@ const Layout = () => {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />}>
-            <Route index element={<IntellectualPropertyContainer />} />
-            <Route path="myip" element={<IntellectualPropertyContainer />} />
-            <Route path="request" element={<RequestContainer />} />
-            <Route path="sharedip" element={<SharedIPContainer />} />
+            <Route index element={<CarsContainer />} />
           </Route>
-          <Route path="/list" element={<List />} />
           <Route path="*" element={<Navigate to="/home" replace />} />
         </Routes>
         <Footer />

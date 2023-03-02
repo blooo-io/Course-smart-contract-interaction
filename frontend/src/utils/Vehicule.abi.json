@@ -1,0 +1,50 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_model",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_location",
+        "type": "string"
+      }
+    ],
+    "name": "createCar",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllDeployedCars",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "model",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "location",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "ownerAddress",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct Vehicule.Car[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
