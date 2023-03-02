@@ -21,7 +21,7 @@ const NavbarTop = () => {
             'text-indigo': !window.location.href.includes('home'),
           })}
         >
-          SIPWB
+          Automotive Traceability
         </Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link className="text-indigo font-weight-bold" href="/home">
@@ -29,9 +29,6 @@ const NavbarTop = () => {
           </Nav.Link>
           <Nav.Link className="text-indigo font-weight-bold" href="/dashboard">
             Dashboard
-          </Nav.Link>
-          <Nav.Link className="text-indigo font-weight-bold" href="/list">
-            List
           </Nav.Link>
         </Nav>
       </Container>
